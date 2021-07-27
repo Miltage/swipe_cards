@@ -9,6 +9,7 @@ enum SlideRegion { inNopeRegion, inLikeRegion, inSuperLikeRegion }
 class DraggableCard extends StatefulWidget {
   final Widget? card;
   final bool isDraggable;
+  final bool canSwipeUp;
   final SlideDirection? slideTo;
   final Function(double distance)? onSlideUpdate;
   final Function(SlideRegion? slideRegion)? onSlideRegionUpdate;
@@ -17,6 +18,7 @@ class DraggableCard extends StatefulWidget {
   DraggableCard(
       {this.card,
       this.isDraggable = true,
+      this.canSwipeUp = true,
       this.onSlideUpdate,
       this.onSlideOutComplete,
       this.slideTo,
@@ -234,7 +236,7 @@ class _DraggableCardState extends State<DraggableCard>
 
         slideOutDirection =
             isInLeftRegion ? SlideDirection.left : SlideDirection.right;
-      } else if (isInTopRegion) {
+      } else if (isInTopRegion && widget.canSwipeUp) {
         slideOutTween = Tween(
             begin: cardOffset, end: dragVector * (2 * context.size!.height));
         slideOutAnimation.forward(from: 0.0);
