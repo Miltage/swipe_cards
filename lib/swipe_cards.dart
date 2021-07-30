@@ -198,7 +198,7 @@ class MatchEngine extends ChangeNotifier {
 
   void rewindMatch() {
     if (_currentItemIndex != 0) {
-      currentItem!.resetMatch();
+      if (currentItem != null) currentItem!.resetMatch();
       _nextItemIndex = _currentItemIndex;
       _currentItemIndex = _currentItemIndex! - 1;
       currentItem!.resetMatch();
