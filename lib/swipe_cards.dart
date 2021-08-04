@@ -179,6 +179,8 @@ class MatchEngine extends ChangeNotifier {
     _nextItemIndex = 1;
   }
 
+  int get numItems => _swipeItems!.length;
+
   SwipeItem? get prevItem =>
       _currentItemIndex! > 0 ? _swipeItems![_currentItemIndex! - 1] : null;
 
