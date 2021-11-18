@@ -168,7 +168,7 @@ class _SwipeCardsState extends State<SwipeCards> {
 }
 
 class MatchEngine extends ChangeNotifier {
-  final List<SwipeItem>? _swipeItems;
+  List<SwipeItem>? _swipeItems;
   int? _currentItemIndex;
   int? _nextItemIndex;
 
@@ -177,6 +177,12 @@ class MatchEngine extends ChangeNotifier {
   }) : _swipeItems = swipeItems {
     _currentItemIndex = 0;
     _nextItemIndex = 1;
+  }
+
+  List<SwipeItem>? get swipeItems => _swipeItems;
+  set swipeItems(List<SwipeItem>? swipeItems) {
+    _swipeItems = swipeItems;
+    notifyListeners();
   }
 
   int get numItems => _swipeItems!.length;
